@@ -1,0 +1,13 @@
+# Node modules
+node_modules/
+
+# Environment variables
+.env
+
+# Jest test cache
+jest/
+
+# Logs
+logs/
+*.log
+npm-debug.log*
