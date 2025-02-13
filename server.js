@@ -16,6 +16,7 @@ const visitorRoutes = require("./src/routes/visitorRoutes");
 const paroleRoutes = require("./src/routes/paroleRoutes");
 const workProgramRoutes = require("./src/routes/workProgramRoutes");
 const behaviorLogRoutes = require("./src/routes/behaviorLogRoutes");
+const activityLogRoutes = require("./src/routes/activityLogRoutes");
 
 dotenv.config();
 
@@ -40,6 +41,7 @@ app.use("/prisonsphere/visitors", visitorRoutes);
 app.use("/prisonsphere/paroles", paroleRoutes);
 app.use("/prisonsphere/work-programs", workProgramRoutes);
 app.use("/prisonsphere/behavior-logs", behaviorLogRoutes);
+app.use("/prisonsphere/activity-logs", activityLogRoutes);
 
 // Use error handling middleware
 app.use(errorHandler);
