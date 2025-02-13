@@ -13,6 +13,7 @@ const { protect, isWarden } = require("./src/middleware/authMiddleware");
 const authRoutes = require("./src/routes/authRoutes");
 const inmateRoutes = require("./src/routes/inmateRoutes");
 const visitorRoutes = require("./src/routes/visitorRoutes");
+const paroleRoutes = require("./src/routes/paroleRoutes");
 
 dotenv.config();
 
@@ -34,6 +35,7 @@ app.use(cors({ credentials: true, origin: "*" }));
 app.use("/prisonsphere/auth", authRoutes);
 app.use("/prisonsphere/inmates", inmateRoutes);
 app.use("/prisonsphere/visitors", visitorRoutes);
+app.use("/prisonsphere/paroles", paroleRoutes);
 
 // Use error handling middleware
 app.use(errorHandler);
