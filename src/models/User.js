@@ -24,7 +24,12 @@ const userSchema = new mongoose.Schema(
   {
     username: { type: String, unique: true, required: true },
     password: { type: String, required: true },
-    role: { type: String, enum: ["Warden", "Admin"], required: true },
+    role: {
+      type: String,
+      enum: ["warden", "admin"],
+      required: true,
+      lowercase: true,
+    },
   },
   { timestamps: true }
 );

@@ -6,9 +6,13 @@ const cors = require("cors");
 
 //Project files Imports
 const connectDB = require("./src/config/db");
-const authRoutes = require("./src/routes/authRoutes");
 const errorHandler = require("./src/middleware/errorMiddleware");
 const { protect, isWarden } = require("./src/middleware/authMiddleware");
+
+//Routes
+const authRoutes = require("./src/routes/authRoutes");
+const inmateRoutes = require("./src/routes/inmateRoutes");
+const visitorRoutes = require("./src/routes/visitorRoutes");
 
 dotenv.config();
 
@@ -28,17 +32,16 @@ app.use(cors({ credentials: true, origin: "*" }));
 
 //Routes
 app.use("/prisonsphere/auth", authRoutes);
-
-//Test
-app.get("/prisonsphere/protected", protect, (req, res) => {
-  res.json({ message: "You have accessed a protected route!", user: req.user });
-});
+app.use("/prisonsphere/inmates", inmateRoutes);
+app.use("/prisonsphere/visitors", visitorRoutes);
 
 // Use error handling middleware
 app.use(errorHandler);
 
-const PORT = process.env.PORT || 5000;
-app.listen(PORT, () => console.log(`✅ Server running on port ${PORT}`));
+if (process.env.NODE_ENV !== "test") {
+  const PORT = process.env.PORT || 5000;
+  app.listen(PORT, () => console.log(`✅ Server running on port ${PORT}`));
+}
 
 // Export app for testing Purpose
 module.exports = app;
